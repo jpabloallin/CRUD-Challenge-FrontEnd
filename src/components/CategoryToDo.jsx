@@ -40,10 +40,10 @@ const CategoryToDo = () => {
   const {state, dispatch} = useContext(Store)
 
   return (
-    <div>      
-      <h2>
+    <div className="m-5 ">      
+      <h2 className="fw-bold ">
         {state.map((category) => (
-          <div key={category.id}>
+          <div key={category.id} className="m-5 border border-dark border-3 rounded">
             <hr/><hr/><hr/>
             <Category category={category} removeCategory={removeCategory}/>
             <ToDoForm categoryId={category.id}/>

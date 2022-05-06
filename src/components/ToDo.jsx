@@ -1,10 +1,14 @@
 const ToDo = ({todo, removeTodo, updateTodo}) => {
 
   return (
-    <div>
-      <h5>{`${todo.name}`}</h5>
-      <button onClick={() => removeTodo(todo)}>Remove Todo</button>
-      <button onClick={() => updateTodo(todo)}>Edit Todo</button>
+    <div className="border border-dark m-3 rounded border-2 d-flex justify-content-evenly">
+      <h5 className="fw-bold m-2">{`${todo.name}`}</h5>
+      <div>
+      {" "}
+      <button onClick={() => removeTodo(todo)} className="btn btn-danger me-2 m-1">Remove Todo</button>
+      <button onClick={() => updateTodo(todo)} className="btn btn-warning">Edit Todo</button>
+      </div>
+      
     </div>
   )
 }
