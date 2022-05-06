@@ -29,16 +29,7 @@ const initialState = {
             ]
         }  
     ],
-    todos: [
-        {
-            id: "1",
-            name: "to-do by default",
-            completed: false,
-            fkCategoryId: "0",
-        }
-    ]
 };
-
 
   const Store = createContext(initialState);
 

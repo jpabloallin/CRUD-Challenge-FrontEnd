@@ -1,13 +1,35 @@
-import React from 'react'
+import { useContext, useState } from "react"
+import { Store } from "../provider/StoreProvider";
 
-const Form = () => {
+const CategoryForm = () => {
+
+  const [category, setCategory] = useState('')
+
+  const {state, dispatch} = useContext(Store)
+
+  const onAdd = (event)=>{
+    event.preventDefault()
+    if(category){
+      dispatch({
+        type: 'add-category',
+        payload: {
+          category
+        }
+      })
+    }
+  }
+
+  const addCategory = (event) =>{
+    const entryCategory = event.target.value
+    setCategory(entryCategory)
+  }
+
   return (
-    <form action="">
-        <label >Category</label>
-        <input type="text" name="title"/>
-        <button>Create Category</button>
-    </form>
+   <form>
+     <input onChange={addCategory} type="text" name="category" placeholder="Category"/>
+     <button onClick={onAdd}>New Category</button>
+   </form>
   )
 }
 
-export default Form
+export default CategoryForm
