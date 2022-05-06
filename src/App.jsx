@@ -2,8 +2,9 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import StoreProvider from './provider/StoreProvider'
-import ListOfToDo from './components/ListOfToDo'
-import Form from './components/Form'
+import ListOfCategories from './components/ListOfCategories'
+import Form from './components/CategoryForm'
+import ToDoList from './components/ToDoList'
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
     <StoreProvider>
       <h1>Hello from my app</h1>
       <Form/>
-      <ListOfToDo/>
+      <ListOfCategories/>
+      <ToDoList/>
+      
     </StoreProvider>
   )
 }
