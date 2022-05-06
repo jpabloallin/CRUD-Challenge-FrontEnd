@@ -2,26 +2,41 @@ import React, { createContext, useReducer } from "react";
 import reducer from "./Reducer";
 
 const initialState = {
+    
     category: {
         id: "",
         title: "",
-        done: false,
-        fkCategoryId: ""
-      },
-      listOfCategories: [
+        todos: [
+            {
+                id: "",
+                name: "",
+                completed: false,
+                fkCategoryId: ""
+            }
+        ]
+    },
+    listOfCategories: [
         {
-            id: 0,
-            name: "Category by default",
+            id: '0',
+            title: "Category by default",
             todos: [
                 {
-                    id: "0",
-                    title: "to-do by default",
-                    done: false,
+                    id: "1",
+                    name: "to-do by default",
+                    completed: false,
                     fkCategoryId: "0",
                 }
             ]
         }  
-      ],
+    ],
+    todos: [
+        {
+            id: "1",
+            name: "to-do by default",
+            completed: false,
+            fkCategoryId: "0",
+        }
+    ]
 };
 
 
