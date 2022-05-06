@@ -10,7 +10,6 @@ function App() {
     <StoreProvider>
       <h1>Hello from my app</h1>
       <CategoryForm/>   
-      <ToDoForm/>   
       <CategoryToDo/>   
     </StoreProvider>
   )

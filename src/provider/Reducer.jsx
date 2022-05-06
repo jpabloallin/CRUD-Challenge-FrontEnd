@@ -29,7 +29,6 @@ function reducer(state, action) {
                 const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
                 return newState
             }        
-            return state
 
     case "delete-todo":
         const categoryTodo = state.find((category)=> category.id === action.payload.fkCategoryId)

@@ -44,8 +44,9 @@ const CategoryToDo = () => {
       <h2>
         {state.map((category) => (
           <div key={category.id}>
-            <hr/>
-            <Category category={category} removeCategory={removeCategory} />
+            <hr/><hr/><hr/>
+            <Category category={category} removeCategory={removeCategory}/>
+            <ToDoForm categoryId={category.id}/>
             <hr/>
             {category.todos.map(todo => (
               <ToDo key={todo.id} removeTodo={removeTodo} todo={todo} updateTodo={updateTodo}/>
