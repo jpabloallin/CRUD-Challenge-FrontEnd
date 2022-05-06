@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { Store } from "../provider/StoreProvider";
 
-const ToDoForm = () => {
+const ToDoForm = ({categoryId}) => {
+  const formRef = useRef(null);
   const [todo, setTodo] = useState("");
 
   const onAdd = (event) => {
@@ -9,10 +10,10 @@ const ToDoForm = () => {
     if (todo) {
       dispatch({
         type: "create-todo",
-        payload: {
-          todo,
-        },
+        name: todo,
+        categoryId: categoryId
       });
+      formRef.current.reset()
     }
   };
 
@@ -24,7 +25,7 @@ const ToDoForm = () => {
   };
 
   return (
-    <form>
+    <form ref={formRef}>
       <input onChange={addTodo} type="text" name="todo" placeholder="Todo" />
       <button onClick={onAdd}>Add a new todo!</button>
     </form>
