@@ -19,15 +19,6 @@ const CategoryToDo = () => {
     })
   }
 
-  const updateTodo = (todo) => {
-    
-    dispatch({
-        type: 'update-todo',
-        payload: todo,
-        newTitle: "new title"
-      })
-  }
-
   const removeCategory = (categoryId) => {
     dispatch({
       type: 'delete-category',
@@ -51,7 +42,7 @@ const CategoryToDo = () => {
             <ToDoForm categoryId={category.id}/>
             <hr className="border border-dark"/>
             {category.todos.map(todo => (
-              <ToDo key={todo.id} removeTodo={removeTodo} todo={todo} updateTodo={updateTodo}/>
+              <ToDo key={todo.id} removeTodo={removeTodo} todo={todo}/>
             ) )}
           </div>
         ))}
