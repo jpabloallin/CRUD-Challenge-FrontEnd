@@ -44,10 +44,12 @@ const CategoryToDo = () => {
       <h2 className="fw-bold ">
         {state.map((category) => (
           <div key={category.id} className="m-5 border border-dark border-3 rounded">
-            <hr/><hr/><hr/>
+            <hr className="border border-dark"/>
+            <hr className="border border-dark"/>
+            <hr className="border border-dark"/>
             <Category category={category} removeCategory={removeCategory}/>
             <ToDoForm categoryId={category.id}/>
-            <hr/>
+            <hr className="border border-dark"/>
             {category.todos.map(todo => (
               <ToDo key={todo.id} removeTodo={removeTodo} todo={todo} updateTodo={updateTodo}/>
             ) )}

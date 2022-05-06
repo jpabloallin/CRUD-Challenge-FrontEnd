@@ -2,8 +2,8 @@ import React from "react";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-light bg-light fw-bold fs-1  bg-dark p-2 text-dark bg-opacity-50">
-      <span className="navbar-brand ms-5 ">To-Do List Application</span>
+    <nav className="navbar navbar-dark bg-dark fw-bold fs-1  bg-dark p-2 text-white">
+      <span className="navbar-brand mx-auto">To-Do List Application</span>
     </nav>
   );
 };
