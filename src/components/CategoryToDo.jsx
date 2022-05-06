@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Store } from '../provider/StoreProvider';
 import Category from './Category';
 import ToDo from './ToDo';
+import ToDoForm from './ToDoForm';
 
 const CategoryToDo = () => {
 
@@ -10,17 +11,21 @@ const CategoryToDo = () => {
   const[id, setId] = useState('')
   const [todosList, setTodosList] = useState([])
 
-  const removeTodo = (todoId) => {
+  const removeTodo = (todo) => {
 
     dispatch({
       type: 'delete-todo',
-      payload: {
-        }
+      payload: todo
     })
   }
 
-  const updateTodo = (todoId) => {
-
+  const updateTodo = (todo) => {
+    
+    dispatch({
+        type: 'update-todo',
+        payload: todo,
+        newTitle: "new title"
+      })
   }
 
   const removeCategory = (categoryId) => {
@@ -37,13 +42,13 @@ const CategoryToDo = () => {
   return (
     <div>      
       <h2>
-        {state.listOfCategories.map((category) => (
-          <div>
+        {state.map((category) => (
+          <div key={category.id}>
             <hr/>
             <Category category={category} removeCategory={removeCategory} />
             <hr/>
             {category.todos.map(todo => (
-              <ToDo removeTodo={removeTodo} todo={todo} updateTodo={updateTodo}/>
+              <ToDo key={todo.id} removeTodo={removeTodo} todo={todo} updateTodo={updateTodo}/>
             ) )}
           </div>
         ))}

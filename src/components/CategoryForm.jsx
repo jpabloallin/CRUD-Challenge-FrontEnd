@@ -12,9 +12,7 @@ const CategoryForm = () => {
     if(category){
       dispatch({
         type: 'add-category',
-        payload: {
-          category
-        }
+        title: category
       })
     }
   }
