@@ -1,8 +1,11 @@
-import React from 'react'
+const ToDo = ({todo, removeTodo, updateTodo}) => {
 
-const ToDo = () => {
   return (
-    <div>ToDo</div>
+    <div>
+      <h5>{`${todo.title}`}</h5>
+      <button onClick={() => removeTodo(note.id)}>Remove Todo</button>
+      <button onClick={() => updateTodo(note.id)}>Edit Todo</button>
+    </div>
   )
 }
 

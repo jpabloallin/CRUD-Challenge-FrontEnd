@@ -8,7 +8,7 @@ const ToDoForm = () => {
     event.preventDefault();
     if (todo) {
       dispatch({
-        type: "add-todo",
+        type: "create-todo",
         payload: {
           todo,
         },
