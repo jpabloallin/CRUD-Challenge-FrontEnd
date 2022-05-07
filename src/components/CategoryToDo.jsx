@@ -41,26 +41,34 @@ const CategoryToDo = () => {
      * Delete a category from the database.
      * @param {*} category 
      */
-    const removeCategory = async (category) => {
+    const removeCategory = async (categoryId) => {
         
-        let response = await fetch(`http://localhost:8081/api/delete/category`,
+        let response = await fetch(`http://localhost:8081/api/delete/category/${categoryId}`,
         {
-            method: 'DELETE'
+            method: 'DELETE',
         })
 
-        if (response) {
+        if (response.status === 200) {
             dispatch({
                 type: 'delete-category',
-                payload: category,
+                payload: categoryId,
             })
         }
     }
 
-  const removeTodo = (todo) => {
-    dispatch({
-      type: "delete-todo",
-      payload: todo,
-    });
+  const removeTodo = async (todo) => {
+
+    let response = await fetch(`http://localhost:8081/api/delete/todo/${todo.id}`,
+        {
+            method: 'DELETE',
+        })
+
+        if (response.status === 200) {
+          dispatch({
+            type: "delete-todo",
+            payload: todo,
+          });
+        }
   };
 
   return (

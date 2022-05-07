@@ -16,9 +16,8 @@ function reducer(state, action) {
         return newState;
 
     case "delete-category":
-        console.log("deleting!!");
         return state.filter((category)=> category.id !== action.payload.id)
-
+        
     case "create-todo":
         const newTodo = [action.payload]
 
