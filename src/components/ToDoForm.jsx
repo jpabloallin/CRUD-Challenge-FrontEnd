@@ -5,7 +5,6 @@ const ToDoForm = ({categoryId}) => {
   const formRef = useRef(null);
   const [todo, setTodo] = useState("");
   const [name, setName] = useState("");
-  console.log(name);
 
   /**
    * Creates a new todo within a category.

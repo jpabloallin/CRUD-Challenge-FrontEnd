@@ -1,5 +1,7 @@
 import React from 'react'
-
+/**
+ * Category component with an onClick event that removes the category.
+ */
 const Category = ({category, removeCategory}) => {
   return (
     <div className="m-3 d-flex justify-content-between">

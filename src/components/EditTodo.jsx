@@ -1,5 +1,16 @@
-import { useContext, useState, useRef } from "react"
+import { useState, useRef } from "react"
 
+/**
+ * Component that renders the editTodo form 
+ * @param {*} param0 
+ * @returns 
+ */
+
+/**
+ * On change function to edit name of todo
+ * @param {*} param0 
+ * @returns 
+ */
 const EditTodo = ({updateTodo, todo}) => {
 
   const formRef = useRef(null);
