@@ -17,22 +17,9 @@ function reducer(state, action) {
 
     case "create-todo":
         console.log("creating todoooo!!");
-        const newTodo = {
-            id: Math.floor(Math.random()*100),
-            name: action.name,
-            done: false,
-            fkCategoryId: action.categoryId,
-        }
+        const newTodo = [action.payload]
+
         console.log(newTodo)
-        if(newTodo){
-            const categoryNewTodo = state.find((category) => category.id === action.categoryId)
-            const Todos = [...categoryNewTodo.todos, newTodo]
-            const parentWithNewTodo = {...categoryNewTodo, todos:Todos}
-            console.log(parentWithNewTodo)
-            const newState = state.map((category) => category.id === action.categoryId ? {...parentWithNewTodo} : category)
-            return newState            
-        }
-        return newState;
 
     case "update-todo":
         const categoryUpdateTodo = state.find((category) =>category.id === action.payload.todo.fkCategoryId)

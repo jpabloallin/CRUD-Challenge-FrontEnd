@@ -8,7 +8,6 @@ const CategoryForm = () => {
   const [title, setTitle] = useState('')
   const {state, dispatch} = useContext(Store)
 
-  console.log(title);
   const onAdd = async(event)=>{
     event.preventDefault()
     if(title){
@@ -45,8 +44,6 @@ const CategoryForm = () => {
   const addingTitle = (e) => {
     setTitle(e.target.value) 
 }
-
-  
 
   return (
    <form ref={formRef} className="form-control border border-5">

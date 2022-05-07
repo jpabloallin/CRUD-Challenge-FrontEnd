@@ -4,24 +4,45 @@ import { Store } from "../provider/StoreProvider";
 const ToDoForm = ({categoryId}) => {
   const formRef = useRef(null);
   const [todo, setTodo] = useState("");
+  const [name, setName] = useState("");
+  console.log(name);
 
-  const onAdd = (event) => {
-    event.preventDefault();
-    if (todo) {
-      dispatch({
-        type: "create-todo",
-        name: todo,
-        categoryId: categoryId
-      });
+  const onAdd = async(event)=>{
+    event.preventDefault()
+    if(name){
+
+      const todoFromForm = {
+        name,
+        completed: false,
+        fkCategoryId: categoryId  
+      }
+
+      let todoSavedPromise = await fetch(`http://localhost:8081/api/create/todo`, 
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(todoFromForm)
+        })
+
+        let todoSaved = await todoSavedPromise.json();
+
+        dispatch({
+            type: "create-todo",
+            payload: todoSaved
+        });
       formRef.current.reset()
     }
-  };
+    setTodo("")
+    
+  }
+
+  
 
   const { state, dispatch } = useContext(Store);
 
   const addTodo = (event) => {
     const entryTodo = event.target.value;
-    setTodo(entryTodo);
+    setName(entryTodo);
   };
 
   return (
