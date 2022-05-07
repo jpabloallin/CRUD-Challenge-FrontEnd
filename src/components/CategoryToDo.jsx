@@ -11,6 +11,7 @@ const CategoryToDo = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [todosList, setTodosList] = useState([]);
+  //const [categoryId, setCategoryId] = useState([]);
 
     useEffect(() => {
         let listOfCategories =  fetchAllCategories().then(
@@ -32,22 +33,27 @@ const CategoryToDo = () => {
         return data
     }
 
+    const removeCategory = async (category) => {
+        
+        let response = await fetch(`http://localhost:8081/api/delete/category/${category.id}`,
+        {
+            method: 'DELETE'
+        })
+
+        if (response) {
+            dispatch({
+                type: 'delete-category',
+                payload: category,
+            })
+        }
+    }
+
   const removeTodo = (todo) => {
     dispatch({
       type: "delete-todo",
       payload: todo,
     });
   };
-
-  const removeCategory = (categoryId) => {
-    dispatch({
-      type: "delete-category",
-      payload: {
-        id: categoryId,
-      },
-    });
-  };
-  console.log(state);
 
   return (
     <div className="m-5 ">

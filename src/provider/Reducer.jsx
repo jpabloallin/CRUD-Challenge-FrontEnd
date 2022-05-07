@@ -1,5 +1,9 @@
 function reducer(state, action) {
   switch (action.type) {
+    case "get-categories":
+        const stateWithAllTheCategories = [...state, ...action.payload]
+            return stateWithAllTheCategories;   
+
     case "add-category":
         console.log("addingggg!!");
 
@@ -16,19 +20,21 @@ function reducer(state, action) {
         return state.filter((category)=> category.id !== action.payload.id)
 
     case "create-todo":
-        console.log("creating todoooo!!");
         const newTodo = [action.payload]
 
         console.log(newTodo)
+        return newTodo;
 
     case "update-todo":
         const categoryUpdateTodo = state.find((category) =>category.id === action.payload.todo.fkCategoryId)
-            if(categoryUpdateTodo){
-                const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.todo.id ? {...action.payload.todo}: todo)
-                const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
-                return newState
-            }        
-            return newState;
+        console.log('categoryUpdateTodo :>> ', categoryUpdateTodo);
+        console.log('state :>> ', state);
+        if(categoryUpdateTodo){
+            const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.todo.id ? {...action.payload.todo}: todo)
+            const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
+            return newState
+        }        
+        return state;
 
     case "delete-todo":
         const categoryTodo = state.find((category)=> category.id === action.payload.fkCategoryId)
@@ -38,13 +44,8 @@ function reducer(state, action) {
             return newState
         }
         return newState;
-
-    case "get-categories":
-        const stateWithAllTheCategories = [...state, ...action.payload]
-        console.log();
-            return stateWithAllTheCategories;    
+ 
     }
-    
 }
 
 export default reducer
