@@ -13,6 +13,7 @@ function reducer(state, action) {
             console.log(newState)
             return newState
         }
+        return newState;
 
     case "delete-category":
         console.log("deleting!!");
@@ -35,15 +36,16 @@ function reducer(state, action) {
             const newState = state.map((category) => category.id === action.categoryId ? {...parentWithNewTodo} : category)
             return newState            
         }
-        return state;
+        return newState;
 
     case "update-todo":
-        const categoryUpdateTodo = state.find((category) =>category.id === action.payload.fkCategoryId)
+        const categoryUpdateTodo = state.find((category) =>category.id === action.payload.todo.fkCategoryId)
             if(categoryUpdateTodo){
-                const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.id ? {...todo, name:action.newTitle}: todo)
+                const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.todo.id ? {...action.payload.todo}: todo)
                 const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
                 return newState
             }        
+            return newState;
 
     case "delete-todo":
         const categoryTodo = state.find((category)=> category.id === action.payload.fkCategoryId)
@@ -52,7 +54,14 @@ function reducer(state, action) {
             const newState = state.map((category)=> category.id === categoryTodo.id ? {...categoryTodo, todos:TodoToDelete} : category)
             return newState
         }
+        return newState;
+
+    case "get-categories":
+        const stateWithAllTheCategories = [...state, ...action.payload]
+        console.log();
+            return stateWithAllTheCategories;    
     }
+    
 }
 
 export default reducer

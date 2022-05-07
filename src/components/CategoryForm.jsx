@@ -17,6 +17,7 @@ const CategoryForm = () => {
       })
       formRef.current.reset()
     }
+    setCategory("")
   }
 
   const addCategory = (event) =>{

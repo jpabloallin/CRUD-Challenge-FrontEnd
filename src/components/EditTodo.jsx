@@ -1,18 +1,20 @@
 import { useContext, useState, useRef } from "react"
 
-const EditTodo = ({updateNote, note}) => {
+const EditTodo = ({updateTodo, todo}) => {
 
-  const [noteTitle, setNoteTitle] = useState('');
+  const [todoName, setTodoName] = useState('');
 
-  const editNote = (event) =>{
-    const editedNote = event.target.value
-    setNoteTitle(editedNote)
+  const editTodo = (event) =>{
+    const editedTodo = event.target.value
+    setTodoName(editedTodo)
   }
 
   return (
-    <div>
-      <input onChange={editNote} type="text" name="editNote" placeholder="Edit note"/>
-      <button onClick={() => updateNote(note, noteTitle)}>Change title</button>
+    <div className= "d-flex align-items-center" >
+      <input onChange={editTodo} type="text" name="editTodo" placeholder="Edit todo"
+      className="form-control form-control-lg"/>
+      <button onClick={() => updateTodo(todo, todoName)} className="btn btn-warning me-2 m-1">
+        Change name</button>
     </div>
   )
 
