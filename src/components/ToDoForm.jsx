@@ -7,6 +7,10 @@ const ToDoForm = ({categoryId}) => {
   const [name, setName] = useState("");
   console.log(name);
 
+  /**
+   * Creates a new todo within a category.
+   * @param {*} event 
+   */
   const onAdd = async(event)=>{
     event.preventDefault()
     if(name){
@@ -35,8 +39,6 @@ const ToDoForm = ({categoryId}) => {
     setTodo("")
     
   }
-
-  
 
   const { state, dispatch } = useContext(Store);
 

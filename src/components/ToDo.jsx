@@ -7,38 +7,56 @@ const ToDo = ({ todo, removeTodo }) => {
 
   const [showEdit, setShowEdit] = useState(false);
 
+  /**
+   * Changes completed boolean on database
+   * @param {*} event 
+   * @param {*} todo 
+   */
   const onChecked = async (event, todo) => {
     const newTodo = { ...todo, completed: !todo.completed };
-    console.log(newTodo);
-    let response = await fetch(`http://localhost:8081/api/update/todo`,
-    {                                                     
-      method: 'PUT',
+    let response = await fetch(`http://localhost:8081/api/update/todo`, {
+      method: "PUT",
       headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
+        "Content-type": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(newTodo)
-    })
+      body: JSON.stringify(newTodo),
+    });
 
-    console.log(response);    
-
-    let todoUpdated = await response.json()
-    console.log(todoUpdated)
+    let todoUpdated = await response.json();
     dispatch({
-      type: 'update-todo',
-      payload:todoUpdated      
-    })
+      type: "update-todo-checkbox",
+      payload: todoUpdated,
+    });
   };
 
-  const updateTodo = (todo, todoName) => {
-    const newTodo = { ...todo, name: todoName };
-    console.log(newTodo);
+  /**
+   * Changes todo's name on database
+   * @param {*} todo 
+   * @param {*} todoName 
+   */
+  const updateTodo = async (todo, todoName) => {
+    const updateTodoName = { ...todo, name: todoName };
+    let todoupdatedPromise = await fetch(
+      `http://localhost:8081/api/update/todo`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(updateTodoName),
+      }
+    );
+
+    let todoUpdateName = await todoupdatedPromise.json();
     dispatch({
       type: "update-todo",
-      payload: {
-        todo: newTodo,
-      },
+      payload: todoUpdateName,
     });
+    formRef.current.reset();
+
+    setTodo("");
   };
 
   const showEditInput = () => {

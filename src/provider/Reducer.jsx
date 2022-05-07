@@ -24,14 +24,21 @@ function reducer(state, action) {
 
         console.log(newTodo)
         return newTodo;
-
+    
     case "update-todo":
+        const updateTodo = action.payload;
+    
+        console.log(updateTodo)
+        return updateTodo
+
+    case "update-todo-checkbox":
         const categoryUpdateTodo = state.find((category) =>category.id === action.payload.fkCategoryId)
         console.log('categoryUpdateTodo :>> ', categoryUpdateTodo);
-        console.log('state :>> ', state);
         if(categoryUpdateTodo){
             const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.id ? {...action.payload}: todo)
+            console.log('todotoupdate :>> ', state);
             const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
+            console.log('newstate :>> ', state);
             return newState
         }        
         return state;

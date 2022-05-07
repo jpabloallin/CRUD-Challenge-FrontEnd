@@ -13,6 +13,10 @@ const CategoryToDo = () => {
   const [todosList, setTodosList] = useState([]);
   //const [categoryId, setCategoryId] = useState([]);
 
+
+    /**
+     * Display all categories with to-dos from database.
+     */
     useEffect(() => {
         let listOfCategories =  fetchAllCategories().then(
             categories => {
@@ -33,9 +37,13 @@ const CategoryToDo = () => {
         return data
     }
 
+    /**
+     * Delete a category from the database.
+     * @param {*} category 
+     */
     const removeCategory = async (category) => {
         
-        let response = await fetch(`http://localhost:8081/api/delete/category/${category.id}`,
+        let response = await fetch(`http://localhost:8081/api/delete/category`,
         {
             method: 'DELETE'
         })
