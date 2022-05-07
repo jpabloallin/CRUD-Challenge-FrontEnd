@@ -5,18 +5,29 @@ import EditTodo from "./EditTodo";
 const ToDo = ({ todo, removeTodo }) => {
   const { state, dispatch } = useContext(Store);
 
-  const [showEdit, setShowEdit] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
 
-  const onChecked = (event, todo) => {
-    const checked = event.currentTarget.checked;
-    const newTodo = { ...todo, completed: checked };
+  const onChecked = async (event, todo) => {
+    const newTodo = { ...todo, completed: !todo.completed };
     console.log(newTodo);
-    dispatch({
-      type: "update-todo",
-      payload: {
-        todo: newTodo,
+    let response = await fetch(`http://localhost:8081/api/update/todo`,
+    {                                                     
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
       },
-    });
+      body: JSON.stringify(newTodo)
+    })
+
+    console.log(response);    
+
+    let todoUpdated = await response.json()
+    console.log(todoUpdated)
+    dispatch({
+      type: 'update-todo',
+      payload:todoUpdated      
+    })
   };
 
   const updateTodo = (todo, todoName) => {

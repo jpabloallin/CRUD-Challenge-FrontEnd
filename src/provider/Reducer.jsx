@@ -26,11 +26,11 @@ function reducer(state, action) {
         return newTodo;
 
     case "update-todo":
-        const categoryUpdateTodo = state.find((category) =>category.id === action.payload.todo.fkCategoryId)
+        const categoryUpdateTodo = state.find((category) =>category.id === action.payload.fkCategoryId)
         console.log('categoryUpdateTodo :>> ', categoryUpdateTodo);
         console.log('state :>> ', state);
         if(categoryUpdateTodo){
-            const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.todo.id ? {...action.payload.todo}: todo)
+            const todoToUpdate = categoryUpdateTodo.todos.map((todo) => todo.id === action.payload.id ? {...action.payload}: todo)
             const newState = state.map((category) => category.id === categoryUpdateTodo.id ? {...categoryUpdateTodo, todos:todoToUpdate}: category)
             return newState
         }        
