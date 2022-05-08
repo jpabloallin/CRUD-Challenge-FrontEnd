@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer className="text-center bg-dark text-white">
       <p className="pt-3">
         {" "}
-        Powered by for <b>Juan Pablo Allin Cañas</b>
+        Powered by <b>Juan Pablo Allin Cañas</b>
       </p>
       <br />
     </footer>
