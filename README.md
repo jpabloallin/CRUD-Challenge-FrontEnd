@@ -9,7 +9,7 @@ This application will help u to create a to do list in order to manage your task
 Clone the repository with the command:
 
 ```bash
-git clone "URL Repository"
+git clone https://github.com/jpabloallin/CRUD-Challenge-FrontEnd.git
 ```
 
 ## Packages
@@ -27,7 +27,7 @@ Run the application using the next command:
 ```bash
 npm run dev
 ```
-Remember that in order to test the full application you need to run the FrondEnd and Back End at the same time.
+***Remember that in order to test the full application you need to run the FrondEnd and Back End at the same time.***
 
 ## Contributing
 Pull requests are welcome. You can also fork the project and test it as you like.
